@@ -9,6 +9,7 @@ public class Main {
 		RedesController Rede = new RedesController();
 		String os = Rede.Os();
 		System.out.println(os);
+		System.out.println("teste");
 		/*
 		 * T
 		 */
