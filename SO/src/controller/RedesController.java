@@ -32,8 +32,12 @@ public class RedesController
 				String linha = buffer.readLine();
 				while (linha != null)
 				{
-					System.out.println(linha);
+					String [] VtNm = linha.split(" netmask");
+					
 					linha = buffer.readLine();
+					int J = 0;
+					System.out.println(J);
+					J=J+1;
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
