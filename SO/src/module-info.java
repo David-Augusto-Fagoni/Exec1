@@ -6,4 +6,5 @@
  *
  */
 module Exec_1 {
+	requires java.desktop;
 }
