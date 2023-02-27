@@ -23,7 +23,7 @@ public class RedesController
 
 		if(os.contains("Linux"))
 		{
-			String Processo = "IFCONFIG";
+			String Processo = "ifconfig";
 			try {
 				Process p =	Runtime.getRuntime().exec(Processo);
 				InputStream fluxo = p.getInputStream();
@@ -32,14 +32,27 @@ public class RedesController
 				String linha = buffer.readLine();
 				while (linha != null)
 				{
-					String [] VtNm = linha.split(" netmask");
+					String [] VtIp = linha.split(" netmask");
+					String [] VtNome = linha.split(" mtu ");
 					
 					linha = buffer.readLine();
-					int J = 0;
-					System.out.println(J);
-					J=J+1;
+					int Ip = VtIp.length;
+					int Nome = VtNome.length;
+					if (Nome == 2)
+					{
+						System.out.print(VtNome[0]);
+						System.out.println(VtNome[1]);
+					}
+					if (Ip > 1)
+						
+					{
+						
+						System.out.println(VtIp[0]);
+					}
 				}
-			} catch (IOException e) {
+			}
+			catch (IOException e) 
+			{
 				e.printStackTrace();
 			}
 			
