@@ -1,6 +1,6 @@
 package view;
 
-import controller.RedesController;
+import controller.RedesController; 
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -9,15 +9,20 @@ public class Main {
 	{
 		RedesController Rede = new RedesController();
 		String os = Rede.Os();
-	
-		int J;
-		J = Integer.parseInt(JOptionPane.showInputDialog("1- Chamar por IP \n2- Chamar por ping "));
 		
-		switch(J)
+	
+		int J=0;
+		while (J!= 3)
 		{
-			case 1 -> Rede.ip(os);
-			case 2 -> Rede.ping();
-			default -> JOptionPane.showMessageDialog(null, "numero invalido");
+			J = Integer.parseInt(JOptionPane.showInputDialog("1- Chamar por IP \n2- Chamar por ping\n3- Sair "));
+		
+			switch(J)
+			{
+				case 1 -> Rede.ip(os);
+				case 2 -> Rede.ping();
+				case 3 -> JOptionPane.showMessageDialog(null, "Saindo");
+				default -> JOptionPane.showMessageDialog(null, "numero invalido");
+			}
 		}
 		
 	}
