@@ -18,7 +18,7 @@ public class RedesController
 		return os;
 	}
 	
-	public static void ip(String os)
+	public void ip(String os)
 	{
 
 		if(os.contains("Linux"))
@@ -97,7 +97,7 @@ public class RedesController
 		
 	}
 	
-	public static void ping(String os)
+	public void ping(String os)
 	{
 		if(os.contains("Linux"))
 		{
@@ -111,16 +111,18 @@ public class RedesController
 				String linha = buffer.readLine();
 				while (linha != null)
 				{
-					String [] VtMed = linha.split("/");					
+					String [] VtMed = linha.split("/");	
+					String [] VtMsg = linha.split("=");
 					linha = buffer.readLine();
 					int Med = VtMed.length;
-					
+					int Msg = VtMsg.length;
+					if (Msg == 3)
+					{
+						System.out.println(linha);
+					}
 					if (Med > 2)
 					{
-						for(int J=0;J < Med;J++)
-						{
-							System.out.println(VtMed[J]);
-						}
+						System.out.println(VtMed[1]+" = "+VtMed[5]+"ms");
 					}
 
 				}
@@ -131,6 +133,39 @@ public class RedesController
 				e.printStackTrace();
 			}
 		}
+		else
+		{
+			String Processo = "PING -4 -n 10 www.google.com.br";
+			
+			try 
+			{
+				Process p =	Runtime.getRuntime().exec(Processo);
+				InputStream fluxo = p.getInputStream();
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null)
+				{
+					String [] VtMed = linha.split("s, ");
+					String [] VtResp = linha.split("Resposta ");
+					linha = buffer.readLine();
+					int Med = VtMed.length;
+					int Resp = VtResp.length;
+					if (Resp > 1)
+					{
+						System.out.println("Resposta "+VtResp[1]);
+					}
+					if (Med > 2)
+					{
+						System.out.println(VtMed[2]);
+					}
+				}
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		}
 	}
-					
 }
+				
