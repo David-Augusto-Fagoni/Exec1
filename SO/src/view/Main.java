@@ -19,7 +19,7 @@ public class Main {
 			switch(J)
 			{
 				case 1 -> Rede.ip(os);
-				case 2 -> Rede.ping();
+				case 2 -> Rede.ping(os);
 				case 3 -> JOptionPane.showMessageDialog(null, "Saindo");
 				default -> JOptionPane.showMessageDialog(null, "numero invalido");
 			}

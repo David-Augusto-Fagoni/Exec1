@@ -97,14 +97,40 @@ public class RedesController
 		
 	}
 	
-	public static void ping()
+	public static void ping(String os)
 	{
-		
-	}
-	
-	
-	
-	
+		if(os.contains("Linux"))
+		{
+			String Processo = "ping -c 10 www.google.com.br";
+			try 
+			{
+				Process p =	Runtime.getRuntime().exec(Processo);
+				InputStream fluxo = p.getInputStream();
+				InputStreamReader leitor = new InputStreamReader(fluxo);
+				BufferedReader buffer = new BufferedReader(leitor);
+				String linha = buffer.readLine();
+				while (linha != null)
+				{
+					String [] VtMed = linha.split("/");					
+					linha = buffer.readLine();
+					int Med = VtMed.length;
+					
+					if (Med > 2)
+					{
+						for(int J=0;J < Med;J++)
+						{
+							System.out.println(VtMed[J]);
+						}
+					}
 
-	
+				}
+				
+			} 
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+					
 }
