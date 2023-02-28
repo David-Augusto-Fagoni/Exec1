@@ -116,7 +116,7 @@ public class RedesController
 					linha = buffer.readLine();
 					int Med = VtMed.length;
 					int Msg = VtMsg.length;
-					if (Msg == 3)
+					if (Msg == 4)
 					{
 						System.out.println(linha);
 					}
