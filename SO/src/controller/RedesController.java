@@ -90,6 +90,10 @@ public class RedesController
 					buffer.append("cmd /c ");
 					buffer.append(Processo);
 				}
+				else
+				{
+				e.printStackTrace();
+				}
 			}
 			
 			
@@ -163,7 +167,17 @@ public class RedesController
 			} 
 			catch (IOException e) 
 			{
+				String MsgErro = e.getMessage();
+				if(MsgErro.contains("740"))
+				{
+					StringBuffer buffer = new StringBuffer();
+					buffer.append("cmd /c ");
+					buffer.append(Processo);
+				}
+				else
+				{
 				e.printStackTrace();
+				}
 			}
 		}
 	}

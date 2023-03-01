@@ -1,6 +1,6 @@
 package view;
 
-import controller.RedesController; 
+import controller.RedesController;  
 import javax.swing.JOptionPane;
 
 public class Main {
